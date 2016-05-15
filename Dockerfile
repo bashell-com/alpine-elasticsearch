@@ -10,7 +10,7 @@ RUN apk add openjdk8-jre
 ENV GOSU_BASE https://github.com/tianon/gosu/releases/download
 ENV GOSU_VERSION 1.9
 RUN set -x \
-    && apk add dpkg gnupg &&
+    && apk add dpkg gnupg \
     && wget -O /usr/local/bin/gosu "$GOSU_BASE/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
     && wget -O /usr/local/bin/gosu.asc "$GOSU_BASE/$GOSU_VERSION/gosu-$(dpkg --print-architecture).asc" \
     && export GNUPGHOME="$(mktemp -d)" \
