@@ -42,7 +42,7 @@ mounted volume:
     $ docker run -d -v "$PWD/esdata":/opt/elasticsearch/data bashell/alpine-elasticsearch
 
 This image includes ``EXPOSE 9200 9300``
-(`default http port <http://www.elastic.co/guide/en/elasticsearch/reference/1.5/modules-http.html>`__),
+(`default http port <https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-http.html>`__),
 so standard container linking will make it automatically available to the linked
 containers.
 
