@@ -21,7 +21,7 @@ RUN set -x \
     && gosu nobody true \
     && apk del gnupg
 
-ENV ELASTICSEARCH_VERSION 2.4.1
+ENV ELASTICSEARCH_VERSION 2.4.4
 ENV ELASTICSEARCH_DOWNLOAD https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch
 RUN mkdir -p /opt && adduser -h /opt/elasticsearch -g elasticsearch -s /bin/bash -D elasticsearch
 
