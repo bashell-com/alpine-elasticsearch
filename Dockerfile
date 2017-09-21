@@ -16,12 +16,12 @@ RUN set -x \
     && export GNUPGHOME="$(mktemp -d)" \
     && gpg2 --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
     && gpg2 --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
-    && rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc \
+    && rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu \
     && gosu nobody true \
     && apk del gnupg
 
-ENV ELASTICSEARCH_VERSION 2.4.4
+ENV ELASTICSEARCH_VERSION 2.4.6
 ENV ELASTICSEARCH_DOWNLOAD https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch
 RUN mkdir -p /opt && adduser -h /opt/elasticsearch -g elasticsearch -s /bin/bash -D elasticsearch
 
