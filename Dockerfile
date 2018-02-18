@@ -21,15 +21,15 @@ RUN set -x \
     && gosu nobody true \
     && apk del gnupg
 
-ENV ELASTICSEARCH_VERSION 2.4.6
-ENV ELASTICSEARCH_DOWNLOAD https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch
+ENV VERSION 5.6.7
+ENV DOWNLOAD_URL https://artifacts.elastic.co/downloads/elasticsearch
 RUN mkdir -p /opt && adduser -h /opt/elasticsearch -g elasticsearch -s /bin/bash -D elasticsearch
 
 WORKDIR /opt
-RUN ln -s elasticsearch elasticsearch-$ELASTICSEARCH_VERSION
+RUN ln -s elasticsearch elasticsearch-$VERSION
 USER elasticsearch
 RUN set -x \
-    && wget -O - "$ELASTICSEARCH_DOWNLOAD/$ELASTICSEARCH_VERSION/elasticsearch-$ELASTICSEARCH_VERSION.tar.gz" | tar zxvf -
+    && wget -O - "$DOWNLOAD_URL/elasticsearch-$VERSION.tar.gz" | tar zxvf -
 
 ENV PATH /opt/elasticsearch/bin:$PATH
 
