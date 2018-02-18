@@ -4,7 +4,7 @@ FROM bashell/alpine-bash
 RUN apk update && apk upgrade
 
 # install jre & openssl
-RUN apk add openjdk8-jre openssl
+RUN apk add openjdk8-jre openssl coreutils
 
 # grab gosu for easy step-down from root
 ENV GOSU_BASE https://github.com/tianon/gosu/releases/download
@@ -21,7 +21,7 @@ RUN set -x \
     && gosu nobody true \
     && apk del gnupg
 
-ENV VERSION 5.6.7
+ENV VERSION 6.2.1
 ENV DOWNLOAD_URL https://artifacts.elastic.co/downloads/elasticsearch
 RUN mkdir -p /opt && adduser -h /opt/elasticsearch -g elasticsearch -s /bin/bash -D elasticsearch
 
