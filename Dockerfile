@@ -1,14 +1,11 @@
-FROM bashell/alpine-bash
-
-# update/upgrade everything
-RUN apk update && apk upgrade
+FROM quay.io/bashell/alpine-bash
 
 # install jre & openssl
 RUN apk add openjdk8-jre openssl coreutils
 
 # grab gosu for easy step-down from root
 ENV GOSU_BASE https://github.com/tianon/gosu/releases/download
-ENV GOSU_VERSION 1.10
+ENV GOSU_VERSION 1.11
 RUN set -x \
     && apk add gnupg \
     && wget -O /usr/local/bin/gosu "$GOSU_BASE/$GOSU_VERSION/gosu-$(apk --print-arch |sed -e 's/x86_64/amd64/')" \
@@ -21,7 +18,7 @@ RUN set -x \
     && gosu nobody true \
     && apk del gnupg
 
-ENV VERSION 6.2.1
+ENV VERSION 6.2.4
 ENV DOWNLOAD_URL https://artifacts.elastic.co/downloads/elasticsearch
 RUN mkdir -p /opt && adduser -h /opt/elasticsearch -g elasticsearch -s /bin/bash -D elasticsearch
 
@@ -29,7 +26,7 @@ WORKDIR /opt
 RUN ln -s elasticsearch elasticsearch-$VERSION
 USER elasticsearch
 RUN set -x \
-    && wget -O - "$DOWNLOAD_URL/elasticsearch-$VERSION.tar.gz" | tar zxvf -
+    && wget -O - "$DOWNLOAD_URL/elasticsearch-$VERSION.tar.gz" | tar zxf -
 
 ENV PATH /opt/elasticsearch/bin:$PATH
 
