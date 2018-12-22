@@ -1,8 +1,5 @@
 FROM bashell/alpine-bash
 
-# update/upgrade everything
-RUN apk update && apk upgrade
-
 # install jre & openssl
 RUN apk add openjdk8-jre openssl
 
