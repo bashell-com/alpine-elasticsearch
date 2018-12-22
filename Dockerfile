@@ -8,7 +8,7 @@ RUN apk add openjdk8-jre openssl
 
 # grab gosu for easy step-down from root
 ENV GOSU_BASE https://github.com/tianon/gosu/releases/download
-ENV GOSU_VERSION 1.10
+ENV GOSU_VERSION 1.11
 RUN set -x \
     && apk add gnupg \
     && wget -O /usr/local/bin/gosu "$GOSU_BASE/$GOSU_VERSION/gosu-$(apk --print-arch |sed -e 's/x86_64/amd64/')" \
@@ -21,7 +21,7 @@ RUN set -x \
     && gosu nobody true \
     && apk del gnupg
 
-ENV VERSION 5.6.7
+ENV VERSION 5.6.14
 ENV DOWNLOAD_URL https://artifacts.elastic.co/downloads/elasticsearch
 RUN mkdir -p /opt && adduser -h /opt/elasticsearch -g elasticsearch -s /bin/bash -D elasticsearch
 
@@ -29,7 +29,7 @@ WORKDIR /opt
 RUN ln -s elasticsearch elasticsearch-$VERSION
 USER elasticsearch
 RUN set -x \
-    && wget -O - "$DOWNLOAD_URL/elasticsearch-$VERSION.tar.gz" | tar zxvf -
+    && wget -O - "$DOWNLOAD_URL/elasticsearch-$VERSION.tar.gz" | tar zxf -
 
 ENV PATH /opt/elasticsearch/bin:$PATH
 

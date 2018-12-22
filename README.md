@@ -9,6 +9,7 @@ Supported tags and respective Dockerfile links
 ----------------------------------------------
 
 -   `latest` ([Dockerfile](https://bitbucket.org/bashell-com/alpine-elasticsearch/src/tip/Dockerfile?fileviewer=file-view-default))
+-   `5.6.14` ([Dockerfile](https://bitbucket.org/bashell-com/alpine-elasticsearch/src/5.6.14/Dockerfile?fileviewer=file-view-default))
 -   `5.6.7` ([Dockerfile](https://bitbucket.org/bashell-com/alpine-elasticsearch/src/5.6.7/Dockerfile?fileviewer=file-view-default))
 -   `2.4.6` ([Dockerfile](https://bitbucket.org/bashell-com/alpine-elasticsearch/src/2.4.6/Dockerfile?fileviewer=file-view-default))
 
